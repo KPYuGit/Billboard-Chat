@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import styles from "./page.module.css";
 
 interface ChatMessage {
@@ -18,7 +18,6 @@ export default function Home() {
   const [isTyping, setIsTyping] = useState<boolean>(false);
   const [userLocation, setUserLocation] = useState<string>('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   // Function to add a message to the chat
   const addMessage = (role: 'user' | 'bot', content: string) => {
@@ -84,7 +83,8 @@ export default function Home() {
       } else {
         addMessage('bot', "Sorry, I'm having trouble responding right now. Please try again.");
       }
-    } catch (error) {
+    } catch (err) {
+      console.error('Error sending message:', err);
       addMessage('bot', "Sorry, I'm having trouble connecting. Please try again.");
     } finally {
       setIsTyping(false);
@@ -92,7 +92,7 @@ export default function Home() {
   };
 
   // Function to get initial greeting message
-  const fetchInitialMessage = (position?: GeolocationPosition) => {
+  const fetchInitialMessage = useCallback((position?: GeolocationPosition) => {
     setLoading(true);
     setError("");
     
@@ -137,13 +137,14 @@ export default function Home() {
           setError(data.error || "Failed to generate message.");
         }
       })
-      .catch(() => {
+      .catch((error) => {
+        console.error("Failed to connect to server:", error);
         setError("Failed to connect to server.");
       })
       .finally(() => {
         setLoading(false);
       });
-  };
+  }, []);
 
   // Auto-scroll to bottom when new messages are added
   useEffect(() => {
@@ -184,11 +185,9 @@ export default function Home() {
     }
 
     return () => {
-      if (intervalRef.current !== null) {
-        clearInterval(intervalRef.current);
-      }
+      // No cleanup needed since we're not using intervals in this component
     };
-  }, []);
+  }, [fetchInitialMessage]);
 
   // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {

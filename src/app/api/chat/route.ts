@@ -54,7 +54,7 @@ function extractFoodItem(message: string): string {
 
 export async function POST(req: NextRequest) {
   try {
-    const { message, messages, foodPreferences } = await req.json();
+    const { message, messages } = await req.json();
 
     if (!message || typeof message !== 'string') {
       return NextResponse.json({ error: 'Message is required' }, { status: 400 });
@@ -89,7 +89,7 @@ Always maintain a professional yet approachable tone.`
 
     // Add conversation history if provided
     if (messages && Array.isArray(messages)) {
-      messages.forEach((msg: any) => {
+      messages.forEach((msg: { role: string; content: string }) => {
         if (msg.role && msg.content) {
           conversationHistory.push({
             role: msg.role === 'user' ? 'user' : 'assistant',

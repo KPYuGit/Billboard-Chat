@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import styles from "./admin.module.css";
 
 interface FoodPreference {
@@ -173,7 +174,7 @@ export default function AdminPage() {
           Data is automatically refreshed every 30 seconds.
         </p>
         <p>
-          <a href="/" className={styles.backLink}>← Back to Chatbot</a>
+          <Link href="/" className={styles.backLink}>← Back to Chatbot</Link>
         </p>
       </div>
     </div>

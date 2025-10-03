@@ -15,7 +15,7 @@ const docClient = DynamoDBDocumentClient.from(client);
 const TABLE_NAME = process.env.DYNAMODB_TABLE_NAME || 'billboard-answer';
 
 // Fallback in-memory storage (if DynamoDB is not configured)
-let foodPreferences: Array<{
+const foodPreferences: Array<{
   id: string;
   name: string;
   food: string;
@@ -87,7 +87,7 @@ export async function POST(req: NextRequest) {
 }
 
 // GET endpoint to retrieve stored food preferences
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
     // Try to get from DynamoDB first
     if (process.env.AWS_ACCESS_KEY_ID && process.env.AWS_SECRET_ACCESS_KEY) {
