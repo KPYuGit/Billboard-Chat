@@ -373,3 +373,471 @@ a.secondary {
     margin-left: auto;
   }
 }
+
+/* Chat Interface Styles */
+.chatContainer {
+  width: 100%;
+  max-width: 800px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.chatHeader {
+  background: #181871;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.chatMessages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.message.user {
+  align-self: flex-end;
+}
+
+.message.bot {
+  align-self: flex-start;
+}
+
+.messageContent {
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  font-size: 1rem;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.message.user .messageContent {
+  background: #181871;
+  color: white;
+  border-bottom-right-radius: 0.25rem;
+}
+
+.message.bot .messageContent {
+  background: #f0f0f0;
+  color: #333;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.messageTime {
+  font-size: 0.75rem;
+  color: #666;
+  margin-top: 0.25rem;
+  padding: 0 0.5rem;
+}
+
+.message.user .messageTime {
+  text-align: right;
+}
+
+.message.bot .messageTime {
+  text-align: left;
+}
+
+.chatInput {
+  display: flex;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-top: 1px solid #e0e0e0;
+  gap: 0.5rem;
+}
+
+.inputField {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 2rem;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.inputField:focus {
+  border-color: #181871;
+}
+
+.inputField:disabled {
+  background: #f0f0f0;
+  cursor: not-allowed;
+}
+
+.sendButton {
+  padding: 0.75rem 1.5rem;
+  background: #181871;
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.sendButton:hover:not(:disabled) {
+  background: #0f0f5a;
+}
+
+.sendButton:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.loadingMessage,
+.errorMessage {
+  text-align: center;
+  padding: 1rem;
+  font-style: italic;
+  color: #666;
+}
+
+.errorMessage {
+  color: #d32f2f;
+}
+
+.typingIndicator {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.75rem 1rem;
+}
+
+.typingIndicator span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #666;
+  animation: typing 1.4s infinite ease-in-out;
+}
+
+.typingIndicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typingIndicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  30% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Purple theme overrides for chat */
+.purple-theme .chatContainer {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.purple-theme .chatHeader {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.purple-theme .message.bot .messageContent {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.purple-theme .message.user .messageContent {
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.purple-theme .messageTime {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.purple-theme .chatInput {
+  background: rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.purple-theme .inputField {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.purple-theme .inputField::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.purple-theme .inputField:focus {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.purple-theme .inputField:disabled {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.purple-theme .sendButton {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.purple-theme .sendButton:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.purple-theme .loadingMessage,
+.purple-theme .errorMessage {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.purple-theme .errorMessage {
+  color: #ff6b6b;
+}
+
+.purple-theme .typingIndicator span {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+/* Split View Layout */
+.splitContainer {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  height: 600px;
+  gap: 1rem;
+}
+
+.splitLeft {
+  flex: 1;
+  min-width: 0;
+}
+
+.splitRight {
+  flex: 1;
+  min-width: 0;
+}
+
+.foodDisplayContainer {
+  width: 100%;
+  height: 100%;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.foodHeader {
+  background: #181871;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+.foodHeader h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.foodHeader p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.foodList {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.foodItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: #f8f9fa;
+  border-radius: 0.75rem;
+  border-left: 4px solid #181871;
+  animation: slideIn 0.3s ease-out;
+}
+
+.foodIcon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.foodName {
+  font-weight: 500;
+  color: #333;
+  flex: 1;
+}
+
+.noFoodYet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #666;
+  text-align: center;
+}
+
+.noFoodYet .foodIcon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.foodStats {
+  padding: 1rem;
+  background: #f8f9fa;
+  border-top: 1px solid #e0e0e0;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.statNumber {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #181871;
+}
+
+.statLabel {
+  font-size: 0.8rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Purple theme overrides for split view */
+.purple-theme .foodDisplayContainer {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.purple-theme .foodHeader {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.purple-theme .foodItem {
+  background: rgba(255, 255, 255, 0.15);
+  border-left-color: rgba(255, 255, 255, 0.5);
+}
+
+.purple-theme .foodName {
+  color: white;
+}
+
+.purple-theme .noFoodYet {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.purple-theme .foodStats {
+  background: rgba(255, 255, 255, 0.1);
+  border-top-color: rgba(255, 255, 255, 0.2);
+}
+
+.purple-theme .statNumber {
+  color: white;
+}
+
+.purple-theme .statLabel {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 600px) {
+  .splitContainer {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .splitLeft,
+  .splitRight {
+    flex: none;
+  }
+  
+  .foodDisplayContainer {
+    height: 300px;
+  }
+  
+  .chatContainer {
+    height: 400px;
+    margin: 0 1rem;
+  }
+  
+  .message {
+    max-width: 90%;
+  }
+  
+  .messageContent {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.8rem;
+  }
+  
+  .chatInput {
+    padding: 0.75rem;
+  }
+  
+  .inputField {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.8rem;
+  }
+  
+  .sendButton {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+}

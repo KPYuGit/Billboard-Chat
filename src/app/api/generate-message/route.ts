@@ -281,7 +281,10 @@ export async function POST(req: NextRequest) {
       if (!/[.!?]$/.test(message)) message += '.';
       message += ' ' + selectedTalkingPoint;
     }
-    return NextResponse.json({ message });
+    return NextResponse.json({ 
+      message,
+      location: location
+    });
   } catch {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
