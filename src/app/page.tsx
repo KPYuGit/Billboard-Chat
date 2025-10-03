@@ -14,7 +14,6 @@ export default function Home() {
   const [inputMessage, setInputMessage] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
-  const [theme, setTheme] = useState<'default' | 'icf'>("default");
   const [isTyping, setIsTyping] = useState<boolean>(false);
   const [userLocation, setUserLocation] = useState<string>('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
