@@ -1,3 +1,7 @@
+body{
+      background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
+}
+
 .page {
   --gray-rgb: 0, 0, 0;
   --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
@@ -11,7 +15,6 @@
   align-items: center;
   justify-items: center;
   min-height: 100svh;
-  background-color: #eeeeee;
   padding: 80px;
   gap: 64px;
   font-family: var(--font-geist-sans);
@@ -169,32 +172,23 @@ a.secondary {
 }
 
 .billboardContainer {
-  max-width: 1600px;
-  max-height: 1000px;
-  width: 80vw;
-  min-height: 75vh;
-  margin: auto;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
-  background: none;
-  background: white;
-  padding: 2rem;
-  border-radius: 1rem;
+  padding: 2rem 0;
+  border-radius: 0;
 }
 @media (max-width: 600px) {
   .billboardContainer {
-    width: 95vw;
-    height: auto;
-    min-height: none !important;
-    max-height: none !important;
-    margin: 2rem 0;
-    padding: 1rem !important;
-  }
-  .billboard {
-    padding: 1rem 0 !important;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 1rem 0;
   }
 }
 
@@ -206,6 +200,7 @@ a.secondary {
   min-height: 100vh;
   width: 100vw;
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 
@@ -237,7 +232,7 @@ a.secondary {
   text-align: left;
   max-width: 1100px;
   margin-bottom: 2.5rem;
-  color: #181871;
+  color: #1e3a8a;
 }
 
 .loading,
@@ -285,11 +280,7 @@ a.secondary {
   }
 }
 
-.brand-bge {
-  height: 48px;
-}
-
-.brand-empower {
+.brand-icf {
   height: 48px;
 }
 
@@ -311,7 +302,7 @@ a.secondary {
     gap: 2.5rem;
     padding: 2rem 1vw 1vw 1vw;
   }
-  .brand-bge, .brand-empower {
+  .brand-icf {
     height: 36px;
     margin-right: 1rem;
   }
@@ -340,23 +331,6 @@ a.secondary {
   gap: 2rem;
 }
 
-.purple-theme {
-  background: linear-gradient(41deg, #19e6c1 0%, #1b1464 60%, #2d0b5a 100%);
-}
-.purple-theme .billboard {
-  background: none;
-}
-.purple-theme .messageBox {
-  color: white;
-}
-.purple-theme .brand-footer,
-.purple-theme .brand-info {
-  color: #fff;
-}
-.purple-theme .brand-link {
-  color: white;
-  text-decoration: none;
-}
 
 @media (max-width: 600px) {
   .brand-logos-vertical {
@@ -366,29 +340,25 @@ a.secondary {
     width: 100%;
     gap: 0;
   }
-  .brand-bge {
-    margin-right: auto;
-  }
-  .brand-empower {
-    margin-left: auto;
+  .brand-icf {
+    margin: 0 auto;
   }
 }
 
 /* Chat Interface Styles */
 .chatContainer {
   width: 100%;
-  max-width: 800px;
-  height: 500px;
+  height: calc(100vh - 8rem);
   display: flex;
   flex-direction: column;
   background: white;
-  border-radius: 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+  box-shadow: none;
   overflow: hidden;
 }
 
 .chatHeader {
-  background: #181871;
+  background: #1e3a8a;
   color: white;
   padding: 1rem;
   text-align: center;
@@ -429,7 +399,7 @@ a.secondary {
 }
 
 .message.user .messageContent {
-  background: #181871;
+  background: #1e3a8a;
   color: white;
   border-bottom-right-radius: 0.25rem;
 }
@@ -474,7 +444,7 @@ a.secondary {
 }
 
 .inputField:focus {
-  border-color: #181871;
+  border-color: #1e3a8a;
 }
 
 .inputField:disabled {
@@ -484,7 +454,7 @@ a.secondary {
 
 .sendButton {
   padding: 0.75rem 1.5rem;
-  background: #181871;
+  background: #1e3a8a;
   color: white;
   border: none;
   border-radius: 2rem;
@@ -495,7 +465,7 @@ a.secondary {
 }
 
 .sendButton:hover:not(:disabled) {
-  background: #0f0f5a;
+  background: #1e40af;
 }
 
 .sendButton:disabled {
@@ -560,74 +530,6 @@ a.secondary {
   }
 }
 
-/* Purple theme overrides for chat */
-.purple-theme .chatContainer {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-}
-
-.purple-theme .chatHeader {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.purple-theme .message.bot .messageContent {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-}
-
-.purple-theme .message.user .messageContent {
-  background: rgba(255, 255, 255, 0.3);
-  color: white;
-}
-
-.purple-theme .messageTime {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.purple-theme .chatInput {
-  background: rgba(255, 255, 255, 0.1);
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.purple-theme .inputField {
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: white;
-}
-
-.purple-theme .inputField::placeholder {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.purple-theme .inputField:focus {
-  border-color: rgba(255, 255, 255, 0.5);
-}
-
-.purple-theme .inputField:disabled {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.purple-theme .sendButton {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-}
-
-.purple-theme .sendButton:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.purple-theme .loadingMessage,
-.purple-theme .errorMessage {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.purple-theme .errorMessage {
-  color: #ff6b6b;
-}
-
-.purple-theme .typingIndicator span {
-  background: rgba(255, 255, 255, 0.7);
-}
 
 /* Split View Layout */
 .splitContainer {
@@ -660,7 +562,7 @@ a.secondary {
 }
 
 .foodHeader {
-  background: #181871;
+  background: #1e3a8a;
   color: white;
   padding: 1rem;
   text-align: center;
@@ -740,7 +642,7 @@ a.secondary {
 .statNumber {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #181871;
+  color: #1e3a8a;
 }
 
 .statLabel {
@@ -761,41 +663,6 @@ a.secondary {
   }
 }
 
-/* Purple theme overrides for split view */
-.purple-theme .foodDisplayContainer {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-}
-
-.purple-theme .foodHeader {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.purple-theme .foodItem {
-  background: rgba(255, 255, 255, 0.15);
-  border-left-color: rgba(255, 255, 255, 0.5);
-}
-
-.purple-theme .foodName {
-  color: white;
-}
-
-.purple-theme .noFoodYet {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.purple-theme .foodStats {
-  background: rgba(255, 255, 255, 0.1);
-  border-top-color: rgba(255, 255, 255, 0.2);
-}
-
-.purple-theme .statNumber {
-  color: white;
-}
-
-.purple-theme .statLabel {
-  color: rgba(255, 255, 255, 0.7);
-}
 
 /* Mobile responsive adjustments */
 @media (max-width: 600px) {
@@ -814,8 +681,8 @@ a.secondary {
   }
   
   .chatContainer {
-    height: 400px;
-    margin: 0 1rem;
+    height: calc(100vh - 2rem);
+    margin: 0;
   }
   
   .message {

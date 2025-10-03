@@ -85,7 +85,7 @@ export default function AdminPage() {
   return (
     <div className={styles.adminContainer}>
       <div className={styles.header}>
-        <h1>Food Preferences Admin</h1>
+        <h1>ICF Digital Assistant - Data Analytics</h1>
         <div className={styles.headerActions}>
           <button 
             onClick={fetchData} 
@@ -106,11 +106,11 @@ export default function AdminPage() {
 
       <div className={styles.stats}>
         <div className={styles.statCard}>
-          <h3>Total Responses</h3>
+          <h3>Total Interactions</h3>
           <p className={styles.statNumber}>{stats.total}</p>
         </div>
         <div className={styles.statCard}>
-          <h3>Storage</h3>
+          <h3>Data Source</h3>
           <p className={styles.statText} style={{ color: storageStatus.color }}>
             {storageStatus.text}
           </p>
@@ -132,11 +132,11 @@ export default function AdminPage() {
       <div className={styles.tableContainer}>
         {loading && data.length === 0 ? (
           <div className={styles.loadingMessage}>
-            Loading food preferences...
+            Loading interaction data...
           </div>
         ) : data.length === 0 ? (
           <div className={styles.emptyMessage}>
-            No food preferences found. Try using the chatbot first!
+            No interaction data found. Try using the digital assistant first!
           </div>
         ) : (
           <table className={styles.dataTable}>
@@ -144,7 +144,7 @@ export default function AdminPage() {
               <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Food</th>
+                <th>Preference</th>
                 <th>Location</th>
                 <th>Timestamp</th>
               </tr>
@@ -170,11 +170,11 @@ export default function AdminPage() {
 
       <div className={styles.footer}>
         <p>
-          This page shows all food preferences collected from the chatbot.
+          This page shows all interaction data collected from the ICF Digital Assistant.
           Data is automatically refreshed every 30 seconds.
         </p>
         <p>
-          <Link href="/" className={styles.backLink}>← Back to Chatbot</Link>
+          <Link href="/" className={styles.backLink}>← Back to Digital Assistant</Link>
         </p>
       </div>
     </div>

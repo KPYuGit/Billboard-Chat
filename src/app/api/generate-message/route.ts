@@ -15,35 +15,35 @@ const predefinedLocations: Record<string, { latitude: number; longitude: number 
 // talking points based on weather
 const weatherTalkingPointsMapping: Record<string, string[]> = {
   "hot": [
-    "Heat wave coming? Get going with a free Quick Home Energy Checkup.",
-    "Increased temps? Decrease your expenses with a home energy audit.",
-    "Don't mind the heat. An average of $3,000 in home energy rebates is pretty chill.",
-    "Don't sweat it, your new AC could help pay for itself.",
-    "Upgrade your AC with up to $1,600 in hot rebates.",
-    "Sunny with a chance of saving thousands on efficient HVAC.",
-    "Summer tips: Wear sunscreen. Hydrate. And get that free HVAC check we offer.",
-    "Tune-up your HVAC now for free. Cool down later.",
-    "How's your home handling this heat? An energy audit can lead to up to $15,000 in rebates.",
-    "When the grid groans, so does your wallet.  Smart thermostats save everyone.",
-    "Earn. Don't burn. Get your credits with Energy Savings Day alerts.",
-    "Heat wave coming? Track your energy usage before it gets here.",
+    "Hot weather ahead? ICF's climate resilience solutions can help communities prepare.",
+    "Rising temperatures call for smart infrastructure. Let's build a resilient future together.",
+    "Heat waves are intensifying. ICF helps organizations adapt with data-driven solutions.",
+    "When temperatures soar, ICF's environmental consulting keeps communities cool and prepared.",
+    "Hot weather patterns changing? ICF's climate analytics help predict and prepare.",
+    "Summer heat waves require smart planning. ICF delivers innovative climate solutions.",
+    "Rising temps, rising challenges. ICF's expertise helps organizations stay ahead.",
+    "Heat waves demand resilient infrastructure. ICF builds tomorrow's smart systems today.",
+    "Hot weather data tells a story. ICF turns insights into action.",
+    "When the mercury rises, ICF's environmental solutions keep communities thriving.",
+    "Hot days ahead? ICF's climate resilience strategies prepare you for anything.",
+    "Temperature trends changing fast. ICF helps organizations adapt with confidence.",
   ],
   "rain": [ 
-    "Storms ahead? Stay ready and energy-smart all season.",
-    "Rain got you down? Chase the clouds away with a free Smart Thermostat.",
-    "Stay dry and save energy with our HVAC tune-up program.",
-    "With the results of you home energy audit, todays the weather just got a whole lot better.",
-    "This message reacts to the weather. Does your thermostat? ",
-    "Rain, rain go away let people earn peak awards today.",
-    "It's raining. It's pouring. The old man is… smart and checking his MyAccount."
+    "Rain or shine, ICF's technology solutions keep operations running smoothly.",
+    "Stormy weather ahead? ICF's disaster management expertise helps communities prepare.",
+    "Rain can't stop progress. ICF's digital solutions work in any weather.",
+    "Wet weather patterns changing? ICF's climate analytics provide clear insights.",
+    "Rain, data, and innovation. ICF transforms weather challenges into opportunities.",
+    "Storm clouds gathering? ICF's resilience planning keeps organizations prepared.",
+    "Rain or drought, ICF's environmental consulting delivers sustainable solutions."
   ],
   "normal": [
-    "When the forecast calls for savings. Will you be ready?",
-    "Clear skies today: A great reminder to clear out and recycle those old appliances.",
-    "It looks like a great day to ditch that old fridge and pick up $50.",
-    "It's a great day for cargo shorts and HVAC rebates.",
-    "Were you prepared for this weather? You ENERGY STAR® built house was.",
-    "If you build an ENERGY STAR® house, your building your nest and your nest egg.",
+    "Perfect weather for innovation. ICF's technology solutions work year-round.",
+    "Clear skies, clear vision. ICF helps organizations see the future of digital transformation.",
+    "Beautiful day for progress. ICF's consulting expertise accelerates your success.",
+    "Great weather for growth. ICF's strategic solutions help organizations thrive.",
+    "Ideal conditions for advancement. ICF's data analytics unlock new possibilities.",
+    "Perfect day for transformation. ICF delivers the future of technology today.",
   ]
 };
 
@@ -251,7 +251,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Generate message using OpenAI
-    const prompt = `You are a smart billboard. Create a warm, friendly greeting or observation (less than 8 words) for people passing by, using this info: location: ${location}, ${neighborhoodInfo}. Do not mention BGE or any program. Do not use phrases like 'Welcome to' or anything that implies the audience is a visitor. Avoid slogans, taglines, or advertisements. Make it sound like a genuine, casual greeting or observation for anyone in the area.`;
+    const prompt = `You are a smart billboard for ICF (International Consulting Firm). Create a warm, friendly greeting or observation (less than 8 words) for people passing by, using this info: location: ${location}, ${neighborhoodInfo}. Do not mention specific ICF services or programs. Do not use phrases like 'Welcome to' or anything that implies the audience is a visitor. Avoid slogans, taglines, or advertisements. Make it sound like a genuine, casual greeting or observation for anyone in the area that reflects ICF's professional, innovative spirit.`;
 
     const aiRes = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',

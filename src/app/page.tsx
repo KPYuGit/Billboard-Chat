@@ -14,7 +14,7 @@ export default function Home() {
   const [inputMessage, setInputMessage] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
-  const [theme, setTheme] = useState<'default' | 'purple'>("purple");
+  const [theme, setTheme] = useState<'default' | 'icf'>("default");
   const [isTyping, setIsTyping] = useState<boolean>(false);
   const [userLocation, setUserLocation] = useState<string>('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -200,20 +200,15 @@ export default function Home() {
   return (
     <>
     <div className={styles.page}>
-      <div className={
-        theme === 'purple'
-          ? `${styles.billboardContainer} ${styles['purple-theme']}`
-          : styles.billboardContainer
-      }>
-        <div className={styles.billboard}>
-          {/* Chat Interface */}
-          <div className={styles.chatContainer}>
+      <div className={styles.billboardContainer}>
+        {/* Chat Interface - Full Container */}
+        <div className={styles.chatContainer}>
             <div className={styles.chatHeader}>
-              <h2>BGE Energy Assistant</h2>
+              <h2>ICF Digital Assistant</h2>
             </div>
             
             <div className={styles.chatMessages}>
-              {loading && <div className={styles.loadingMessage}>Loading BGE Assistant...</div>}
+              {loading && <div className={styles.loadingMessage}>Loading ICF Assistant...</div>}
               {error && <div className={styles.errorMessage}>{error}</div>}
               
               {messages.map((message) => (
@@ -248,7 +243,7 @@ export default function Home() {
                 type="text"
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
-                placeholder="Ask about energy savings, rebates, or home efficiency..."
+                placeholder="Ask about digital solutions, technology consulting, or innovation..."
                 disabled={isTyping}
                 className={styles.inputField}
               />
@@ -260,33 +255,7 @@ export default function Home() {
                 Send
               </button>
             </form>
-          </div>
         </div>
-
-      
-        </div>
-
-      {/* Theme Toggle Button */}
-      <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
-        <button
-          onClick={() => setTheme(theme === 'default' ? 'purple' : 'default')}
-          style={{
-            padding: '0.5rem 1.5rem',
-            borderRadius: '1rem',
-            border: 'none',
-            background: theme === 'purple' ? '#7c3aed' : '#e0e0e0',
-            color: theme === 'purple' ? '#fff' : '#333',
-            fontWeight: 600,
-            fontSize: '1rem',
-            cursor: 'pointer',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
-            transition: 'background 0.2s, color 0.2s',
-            marginBottom: '2rem',
-          }}
-          aria-pressed={theme === 'purple'}
-        >
-          {theme === 'purple' ? 'Switch to Light Theme' : 'Switch to BGE Theme'}
-        </button>
       </div>
     </div>
     </>
